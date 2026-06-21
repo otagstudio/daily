@@ -1,4 +1,3 @@
-import os
 import asyncio
 import logging
 from datetime import datetime
@@ -7,8 +6,8 @@ from telegram import Bot
 from telegram.error import TelegramError
 
 # === AYARLAR ===
-TOKEN = os.environ.get("TELEGRAM_TOKEN", "YOUR_TOKEN_HERE")
-CHAT_ID = os.environ.get("CHAT_ID", "YOUR_CHAT_ID_HERE")
+TOKEN = "8709665483:AAFdZBceYA0kLBBdjx-OMDePuzD_ySqjp8w"
+CHAT_ID = "8243859152"
 TIMEZONE = pytz.timezone("Europe/Istanbul")
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(message)s")
@@ -124,7 +123,6 @@ async def send_message(bot: Bot, text: str):
 # === ZAMANLAYICI ===
 async def scheduler(bot: Bot):
     logger.info("Bot başladı, mesajlar bekleniyor...")
-    
     sent_today = {}
 
     while True:
@@ -158,7 +156,7 @@ async def scheduler(bot: Bot):
         elif gonder_mi("gece", 23, 0):
             await send_message(bot, GECE_MESAJI)
 
-        await asyncio.sleep(30)  # Her 30 saniyede kontrol et
+        await asyncio.sleep(30)
 
 # === ANA FONKSİYON ===
 async def main():
